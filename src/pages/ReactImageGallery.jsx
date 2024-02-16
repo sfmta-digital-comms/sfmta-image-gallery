@@ -37,7 +37,8 @@ const ReactImageGallery = () => {
             original: img.src,
             thumbnail: img.src, // Assuming thumbnails are the same as originals
             originalTitle: titleAlt,
-            originalAlt: titleAlt
+            originalAlt: titleAlt,
+            loading: 'lazy',
           }
         } else {
           return {
@@ -45,6 +46,7 @@ const ReactImageGallery = () => {
             thumbnail: img.src, // Assuming thumbnails are the same as originals
             originalTitle: titleAlt,
             originalAlt: titleAlt,
+            loading: 'lazy',
             description: description, // This field is actually not directly supported by `react-image-gallery` for display purposes
           };
         }
