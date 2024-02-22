@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Lightbox from 'yet-another-react-lightbox';
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
+import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
 import 'yet-another-react-lightbox/styles.css';
 // import { imagesFull as imageFullPaths } from '../components/images-full';
 // import { imagesThumbnails as imageThumbnailPaths } from '../components/images-thumbnails';
@@ -46,7 +48,7 @@ const ReactImageCustomGrid = ({ imageData }) => {
         open={index >= 0}
         index={index}
         close={() => setIndex(-1)}
-        plugins={[Zoom]}
+        plugins={[Zoom, Fullscreen, Slideshow ]}
         zoom={{
           maxZoomPixelRatio: 1,
           zoomInMultiplier: 2,
