@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Gallery } from 'react-grid-gallery';
 import Lightbox from 'yet-another-react-lightbox';
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import 'yet-another-react-lightbox/styles.css';
 import { imagesFull as imageFullPaths } from '../components/images-full';
 import { imagesThumbnails as imageThumbnailPaths } from '../components/images-thumbnails';
@@ -9,8 +9,6 @@ import { imagesThumbnails as imageThumbnailPaths } from '../components/images-th
 const imagesForGallery = imageFullPaths.map((img, index) => ({
   src: img.src,
   thumbnail: imageThumbnailPaths[index].src,
-  // thumbnailWidth: 320,  // Adjust based on your actual image sizes
-  // thumbnailHeight: 174, // Adjust accordingly
   caption: img.title || 'Image caption here', // Optional: Use title or another attribute for the caption
 }));
 
@@ -19,28 +17,26 @@ const slides = imagesForGallery.map(({ src }) => ({
   src,
 }));
 
-const ReactImageGrid = () => {
-  // Gallery container style
-  const galleryStyle = {
-    display: 'grid',
-    // gridTemplateColumns: '1fr 1fr', // Two images per row
-    gridColumnGap: '10px', // Adjust the space between images
-  };
-
-  // Custom image style (if needed, apply via CSS classes)
-  // .react-grid-gallery img { object-fit: cover; height: 100%; }
-
+const ReactImageCustomGrid = () => {
   const [index, setIndex] = useState(-1);
 
   const handleClick = (index) => setIndex(index);
 
   return (
-    <div id='gridGallery' style={galleryStyle}>
-      <Gallery images={imagesForGallery} onClick={handleClick} enableImageSelection={false} />
-      <Lightbox slides={slides} open={index >= 0} index={index} close={() => setIndex(-1)} />
+    <div className="grid">
+      {imagesForGallery.map((image, idx) => (
+        <div className="img-wrapper" key={idx} onClick={() => handleClick(idx)}>
+          <img
+            src={image.thumbnail}
+            alt={image.caption}
+            style={{ cursor: 'pointer' }} // Inline styles are optional since you've defined styles in CSS
+          />
+        </div>
+      ))}
+      <Lightbox slides={slides} open={index >= 0} index={index} close={() => setIndex(-1)} plugins={[Zoom]} />
     </div>
   );
 };
 
-export default ReactImageGrid;
 
+export default ReactImageCustomGrid;

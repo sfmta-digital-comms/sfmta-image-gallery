@@ -5,11 +5,10 @@ function Home() {
   return (
     <div className="home">
       <nav>
-        <ul>
-          <li><Link to="/image-gallery">Image Carousel</Link></li>
-          <li><Link to="/image-grid">Image Grid</Link></li>
-          {/* You can add more navigation links as needed */}
-        </ul>
+        <Link to="/image-gallery">Direction 1: Image Carousel</Link>
+        <Link to="/image-grid">Direction 2: Image Grid</Link>
+        <Link to="/image-custom-grid">Direction 3: Custom Grid</Link>
+        <Link to="/image-custom-grid-no-border">Direction 4: Custom Grid No Border</Link>
       </nav>
     </div>
   );
