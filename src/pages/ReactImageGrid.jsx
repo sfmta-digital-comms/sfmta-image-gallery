@@ -2,24 +2,25 @@ import React, { useState } from 'react';
 import { Gallery } from 'react-grid-gallery';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
-import { imagesFull as imageFullPaths } from '../components/images-full';
-import { imagesThumbnails as imageThumbnailPaths } from '../components/images-thumbnails';
 
-// Convert your images for the gallery
-const imagesForGallery = imageFullPaths.map((img, index) => ({
-  src: img.src,
-  thumbnail: imageThumbnailPaths[index].src,
-  // thumbnailWidth: 320,  // Adjust based on your actual image sizes
-  // thumbnailHeight: 174, // Adjust accordingly
-  caption: img.title || 'Image caption here', // Optional: Use title or another attribute for the caption
-}));
 
-// Convert images for the lightbox
-const slides = imagesForGallery.map(({ src }) => ({
-  src,
-}));
 
-const ReactImageGrid = () => {
+const ReactImageGrid = ({ imageData }) => {
+  const imagesForGallery = imageData.map((imgData) => ({
+    src: imgData.full,
+    thumbnail: imgData.thumbnail,
+    // Optional: specify thumbnail dimensions if known or needed
+    // thumbnailWidth: 320,
+    // thumbnailHeight: 174,
+    // Use EXIF ImageDescription or a custom description as the caption
+    caption: imgData.exif?.ImageDescription || imgData.description || 'Image caption here',
+  }));
+
+  // Convert images for the lightbox
+  const slides = imagesForGallery.map(({ src }) => ({
+    src,
+  }));
+  
   // Gallery container style
   const galleryStyle = {
     display: 'grid',

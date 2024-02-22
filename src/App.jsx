@@ -6,18 +6,18 @@ import ReactImageGrid from './pages/ReactImageGrid';
 import ReactImageCustomGrid from './pages/ReactImageCustomGrid';
 import ReactImageCustomGridNoBorder from './pages/ReactImageCustomGridNoBorder';
 import './App.css';
-// Import other pages
+import imageData from './imageData.json'; // Import image data
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/image-gallery" element={<ReactImageGallery />} />
-        <Route path="/image-grid" element={<ReactImageGrid />} />
-        <Route path="/image-custom-grid" element={<ReactImageCustomGrid />} />
-        <Route path="/image-custom-grid-no-border" element={<ReactImageCustomGridNoBorder />} />
-        {/* Define routes for other pages */}
+        <Route path="/" element={<Home imageData={imageData} />} />
+        <Route path="/image-gallery" element={<ReactImageGallery imageData={imageData} />} />
+        <Route path="/image-grid" element={<ReactImageGrid imageData={imageData} />} />
+        <Route path="/image-custom-grid" element={<ReactImageCustomGrid imageData={imageData} />} />
+        <Route path="/image-custom-grid-no-border" element={<ReactImageCustomGridNoBorder imageData={imageData} />} />
+        {/* Continue passing imageData as props to other routes as needed */}
       </Routes>
     </div>
   );

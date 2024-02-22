@@ -2,24 +2,26 @@ import React, { useState } from 'react';
 import Lightbox from 'yet-another-react-lightbox';
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import 'yet-another-react-lightbox/styles.css';
-import { imagesFull as imageFullPaths } from '../components/images-original';
+// import { imagesFull as imageFullPaths } from '../components/images-original';
 // import { imagesFull as imageFullPaths } from '../components/images-full';
-import { imagesThumbnails as imageThumbnailPaths } from '../components/images-thumbnails';
+// import { imagesThumbnails as imageThumbnailPaths } from '../components/images-thumbnails';
 
 // Convert your images for the gallery
-const imagesForGallery = imageFullPaths.map((img, index) => ({
-  src: img.src,
-  thumbnail: imageThumbnailPaths[index].src,
-  caption: img.title || 'Image caption here', // Optional: Use title or another attribute for the caption
-}));
 
-// Convert images for the lightbox
-const slides = imagesForGallery.map(({ src }) => ({
-  src,
-}));
-
-const ReactImageCustomGridNoBorder = () => {
+const ReactImageCustomGridNoBorder = ({ imageData }) => {
   const [index, setIndex] = useState(-1);
+
+  const imagesForGallery = imageData.map((imageData, index) => ({
+    src: imageData.original,
+    thumbnail: imageData.thumbnail,
+    caption: imageData.title || 'Image caption here', // Optional: Use title or another attribute for the caption
+  }));
+
+  // Convert images for the lightbox
+  const slides = imagesForGallery.map(({ src }) => ({
+    src,
+  }));
+
 
   const handleClick = (index) => setIndex(index);
 
