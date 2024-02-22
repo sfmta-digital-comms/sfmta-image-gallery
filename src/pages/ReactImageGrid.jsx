@@ -7,8 +7,14 @@ import 'yet-another-react-lightbox/styles.css';
 
 const ReactImageGrid = ({ imageData }) => {
   const imagesForGallery = imageData.map((imgData) => ({
-    src: imgData.full,
-    thumbnail: imgData.thumbnail,
+    // Local images
+    // src: imgData.full,
+    // thumbnail: imgData.thumbnail,
+
+    // Imgix images
+    src: imgData.imgixFull,
+    thumbnail: imgData.imgixThumbnail,
+
     // Optional: specify thumbnail dimensions if known or needed
     // thumbnailWidth: 320,
     // thumbnailHeight: 174,

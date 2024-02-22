@@ -16,6 +16,9 @@ const originalsDir = path.join(__dirname, 'public', 'images', 'originals');
 const fullsDir = './images/fulls';
 const thumbnailsDir = './images/thumbnails';
 
+// Base URL for Imgix
+const imgixBaseUrl = 'https://sfmta-test-975080756.imgix.net';
+
 // Function to read all files in the directory
 async function readFiles(directory) {
     return fs.readdir(directory, { withFileTypes: true });
@@ -29,10 +32,19 @@ async function generateImageData(files) {
             try {
                 const originalPath = path.join(originalsDir, file.name);
                 const exif = await parse(originalPath);
+
+                // Generate Imgix URLs
+                const imgixOriginal = `${imgixBaseUrl}/originals/${file.name}?wm=webp&lossless=0`;
+                const imgixFull = `${imgixBaseUrl}/fulls/${file.name}?wm=webp&lossless=0`;
+                const imgixThumbnail = `${imgixBaseUrl}/thumbnails/${file.name}?wm=webp&lossless=0`;
+
                 imageData.push({
                     original: path.join('./images/originals', file.name),
                     full: path.join(fullsDir, file.name),
                     thumbnail: path.join(thumbnailsDir, file.name),
+                    imgixOriginal, // Add the new Imgix URL
+                    imgixFull, // Add the new Imgix URL
+                    imgixThumbnail, // Add the new Imgix URL
                     title: "", // Title can be extracted or defined here
                     description: "", // Description can be extracted or defined here
                     exif

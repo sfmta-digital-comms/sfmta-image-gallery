@@ -12,8 +12,14 @@ const ReactImageCustomGrid = ({ imageData }) => {
 
   // Convert your images for the gallery
   const imagesForGallery = imageData.map((imageData, index) => ({
-    src: imageData.original,
-    thumbnail: imageData.thumbnail,
+    // Local images
+    // src: imageData.original,
+    // thumbnail: imageData.thumbnail,
+
+    // Imgix images
+    src: imageData.imgixOriginal,
+    thumbnail: imageData.imgixThumbnail,
+    
     caption: imageData.title || 'Image caption here', // Optional: Use title or another attribute for the caption
   }));
 
