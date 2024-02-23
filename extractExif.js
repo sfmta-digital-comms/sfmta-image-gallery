@@ -57,11 +57,21 @@ async function generateImageData(files) {
     return imageData;
 }
 
+// Function to sort imageData by DateTimeOriginal
+function sortByDateTimeOriginal(imageData) {
+    return imageData.sort((a, b) => {
+        const dateA = a.exif.DateTimeOriginal ? new Date(a.exif.DateTimeOriginal) : new Date(0); // Use Unix epoch as fallback
+        const dateB = b.exif.DateTimeOriginal ? new Date(b.exif.DateTimeOriginal) : new Date(0);
+        return dateA - dateB;
+    });
+}
+
 // Main function to execute the script
 async function main() {
     try {
         const files = await readFiles(originalsDir);
-        const imageData = await generateImageData(files);
+        let imageData = await generateImageData(files);
+        imageData = sortByDateTimeOriginal(imageData); // Sort imageData before writing
         await fs.writeFile(path.join(__dirname, 'imageData.json'), JSON.stringify(imageData, null, 2));
         console.log('Image data extraction complete and saved to imageData.json');
     } catch (error) {
