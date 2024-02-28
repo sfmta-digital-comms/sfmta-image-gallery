@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 import Lightbox from 'yet-another-react-lightbox';
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
@@ -10,6 +12,11 @@ import ExhibitDescription from '../components/ExhibitDescription';
 
 const ReactImageCustomGridNoBorder = ({ imageData }) => {
   const [index, setIndex] = useState(-1);
+  // Initialize showModal state to true to show the modal when the component mounts
+  const [showModal, setShowModal] = useState(true);
+
+  // Function to close the modal
+  const handleCloseModal = () => setShowModal(false);
 
   const imagesForGallery = imageData.map((imageData, index) => ({
     src: imageData.imgixOriginal,
@@ -28,9 +35,19 @@ const ReactImageCustomGridNoBorder = ({ imageData }) => {
 
   return (
     <>
-      <ExhibitDescription
-        mobile={true}
-      />
+      <Modal show={showModal} onHide={handleCloseModal} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Welcome
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <ExhibitDescription mobile={true} />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseModal}>Close</Button>
+        </Modal.Footer>
+      </Modal>
       <div className="grid">
         {imagesForGallery.map((image, idx) => (
           <div className="img-wrapper" key={idx} onClick={() => handleClick(idx)}>
