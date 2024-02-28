@@ -31,7 +31,7 @@ const Navbar = () => {
     fontSize: '22px',
     display: 'flex',
     alignItems: 'center',
-    fontWeight: 900,
+    fontWeight: 600,
     textDecoration: 'none', 
   }
 
