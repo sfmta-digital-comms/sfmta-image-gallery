@@ -46,7 +46,7 @@ function App() {
       <div style={{ backgroundColor: '#f2f2f3', paddingTop: '20px' }}>
         <div className='container bg-white' style={{ maxWidth: '1150px' }}>
           <Routes>
-            <Route path="/" element={<Home imageData={imageData} />} />
+            <Route path="/" element={<ReactImageCustomGrid imageData={imageData} />} />
             <Route path="/image-gallery" element={<ReactImageGallery imageData={imageData} />} />
             <Route path="/image-grid" element={<ReactImageGrid imageData={imageData} />} />
             <Route path="/image-custom-grid" element={<ReactImageCustomGrid imageData={imageData} />} />
