@@ -1,5 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react'
+import { BrowserView, MobileView, isMobile, isTablet } from 'react-device-detect';
+
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import ReactImageGallery from './pages/ReactImageGallery';
@@ -45,14 +47,16 @@ function App() {
     <div className="App">
       <div style={{ backgroundColor: '#f2f2f3', paddingTop: '20px' }}>
         <div className='container bg-white' style={{ maxWidth: '1150px' }}>
-          <Routes>
-            <Route path="/" element={<ReactImageCustomGrid imageData={imageData} />} />
-            <Route path="/image-gallery" element={<ReactImageGallery imageData={imageData} />} />
-            <Route path="/image-grid" element={<ReactImageGrid imageData={imageData} />} />
-            <Route path="/image-custom-grid" element={<ReactImageCustomGrid imageData={imageData} />} />
-            <Route path="/image-custom-grid-no-border" element={<ReactImageCustomGridNoBorder imageData={imageData} />} />
-            {/* Continue passing imageData as props to other routes as needed */}
-          </Routes>
+          <BrowserView>
+            <Routes>
+              <Route path="/" element={<ReactImageGallery imageData={imageData} />} />
+            </Routes>
+          </BrowserView>
+          <MobileView>
+            <Routes>
+              <Route path="/" element={<ReactImageCustomGrid imageData={imageData} />} />
+            </Routes>
+          </MobileView>
         </div>
       </div>
     </div>
