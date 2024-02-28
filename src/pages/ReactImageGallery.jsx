@@ -19,12 +19,18 @@ const ReactImageGallery = ({ imageData }) => {
     originalAlt: imgData.exif.ImageDescription || imgData.description,
     loading: 'lazy',
     description: imgData.exif.Caption || imgData.description,
+    originalHeight: 700,
   }));
 
   return (
     <>
       <ExhibitDescription />
-      <ImageGallery items={items} />;
+      <ImageGallery
+        items={items}
+        showFullscreenButton={false}
+        thumbnailPosition='bottom'
+        showPlayButton={false}
+      />
     </>
   )
 

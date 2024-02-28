@@ -2,7 +2,11 @@ body {
     margin: 0;
     padding: 0;
     background-color: #41484f;
-    color: white;
+    color: #41484f;
+}
+
+.App-container {
+    max-width: 1150px;
 }
 
 .home nav {
@@ -64,3 +68,21 @@ body {
 /* .grid img:hover {
     transform: scale(1.05);
 } */
+
+button.image-gallery-icon.image-gallery-play-button {
+    padding: 5px;
+}
+
+.image-gallery-slide .image-gallery-description {
+    bottom: 0;
+    display: block;
+    position: inherit;
+    background: #41484f;
+    padding: 18px 100px;
+    line-height: 30px;
+    cursor: auto;
+}
+
+.image-gallery-content .image-gallery-slide .image-gallery-image {
+    cursor: auto;
+}
