@@ -19,6 +19,13 @@ function sendHeightToParent() {
   }, '*');
 }
 
+
+function sendMessageToDeviceParent() {
+  window.parent.postMessage({
+    mobile: true
+  }, '*');
+}
+
 function App() {
   useEffect(() => {
     const interval = setInterval(() => {
@@ -42,6 +49,13 @@ function App() {
       window.removeEventListener('resize', handleResize);
     };
   }, [])
+
+  useEffect(() => {
+    if (isMobile || isTablet) {
+      sendMessageToDeviceParent();
+    }
+  }, []);
+
 
   return (
     <div className="App">
