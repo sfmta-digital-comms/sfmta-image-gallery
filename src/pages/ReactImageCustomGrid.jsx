@@ -28,7 +28,9 @@ const ReactImageCustomGridNoBorder = ({ imageData }) => {
 
   return (
     <>
-      <ExhibitDescription />
+      <ExhibitDescription
+        mobile={true}
+      />
       <div className="grid">
         {imagesForGallery.map((image, idx) => (
           <div className="img-wrapper" key={idx} onClick={() => handleClick(idx)}>

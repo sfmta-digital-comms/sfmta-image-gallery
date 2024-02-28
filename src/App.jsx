@@ -2,12 +2,12 @@ import React from 'react';
 import { useEffect } from 'react'
 import { BrowserView, MobileView, isMobile, isTablet } from 'react-device-detect';
 
-import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
+// import { Routes, Route } from 'react-router-dom';
+// import Home from './pages/Home';
 import ReactImageGallery from './pages/ReactImageGallery';
-import ReactImageGrid from './pages/ReactImageGrid';
+// import ReactImageGrid from './pages/ReactImageGrid';
 import ReactImageCustomGrid from './pages/ReactImageCustomGrid';
-import ReactImageCustomGridNoBorder from './pages/ReactImageCustomGridNoBorder';
+// import ReactImageCustomGridNoBorder from './pages/ReactImageCustomGridNoBorder';
 import './App.css';
 import imageData from './imageData.json'; // Import image data
 
@@ -48,14 +48,10 @@ function App() {
       <div style={{ backgroundColor: '#f2f2f3', paddingTop: '20px' }}>
         <div className='container bg-white' style={{ maxWidth: '1150px' }}>
           <BrowserView>
-            <Routes>
-              <Route path="/" element={<ReactImageGallery imageData={imageData} />} />
-            </Routes>
+            <ReactImageGallery imageData={imageData} />
           </BrowserView>
           <MobileView>
-            <Routes>
-              <Route path="/" element={<ReactImageCustomGrid imageData={imageData} />} />
-            </Routes>
+            <ReactImageCustomGrid imageData={imageData} />
           </MobileView>
         </div>
       </div>

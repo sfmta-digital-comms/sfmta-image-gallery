@@ -1,10 +1,8 @@
 import React from 'react';
 
-function ExhibitDescription() {
+function ExhibitDescription({ mobile }) {
   // Define your styles as an object
-  const descStyle = {
-    padding: '40px 180px',
-  };
+  const descStyle = mobile ? {} : { padding: '40px 180px' };
 
   return (
     <div style={descStyle}>
