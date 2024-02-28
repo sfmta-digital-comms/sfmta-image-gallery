@@ -7,6 +7,7 @@ import { BrowserView, MobileView, isMobile, isTablet } from 'react-device-detect
 import ReactImageGallery from './pages/ReactImageGallery';
 // import ReactImageGrid from './pages/ReactImageGrid';
 import ReactImageCustomGrid from './pages/ReactImageCustomGrid';
+import Navbar from './components/Navbar';
 // import ReactImageCustomGridNoBorder from './pages/ReactImageCustomGridNoBorder';
 import './App.css';
 import imageData from './imageData.json'; // Import image data
@@ -59,6 +60,7 @@ function App() {
 
   return (
     <div className="App">
+      {(isMobile || isTablet) && <Navbar />} {/* Updated this line */}
       <div style={{ backgroundColor: '#f2f2f3', paddingTop: '20px' }}>
         <div className='container bg-white' style={{ maxWidth: '1150px' }}>
           <BrowserView>
