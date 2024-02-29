@@ -28,7 +28,7 @@ function sendMessageToDeviceParent() {
 }
 
 function App() {
-  const [showModal, setShowModal] = useState(false); // Manage modal visibility here
+  const [showModal, setShowModal] = useState(true); // Manage modal visibility here
 
   useEffect(() => {
     const interval = setInterval(() => {
