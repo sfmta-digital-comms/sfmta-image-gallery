@@ -10,10 +10,10 @@ import 'yet-another-react-lightbox/styles.css';
 import "yet-another-react-lightbox/plugins/captions.css";
 import ExhibitDescription from '../components/ExhibitDescription';
 
-const ReactImageCustomGridNoBorder = ({ imageData }) => {
+const ReactImageCustomGrid = ({ imageData, showModal, setShowModal }) => {
   const [index, setIndex] = useState(-1);
   // Initialize showModal state to true to show the modal when the component mounts
-  const [showModal, setShowModal] = useState(true);
+  // const [showModal, setShowModal] = useState(true);
 
   // Function to close the modal
   const handleCloseModal = () => setShowModal(false);
@@ -35,7 +35,7 @@ const ReactImageCustomGridNoBorder = ({ imageData }) => {
 
   return (
     <>
-      <Modal show={showModal} onHide={handleCloseModal} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+      <Modal show={showModal} onHide={() => setShowModal(false)} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
             Welcome
@@ -83,4 +83,4 @@ const ReactImageCustomGridNoBorder = ({ imageData }) => {
 };
 
 
-export default ReactImageCustomGridNoBorder;
+export default ReactImageCustomGrid;

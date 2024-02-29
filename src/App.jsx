@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { BrowserView, MobileView, isMobile, isTablet } from 'react-device-detect';
 
 // import { Routes, Route } from 'react-router-dom';
@@ -28,6 +28,8 @@ function sendMessageToDeviceParent() {
 }
 
 function App() {
+  const [showModal, setShowModal] = useState(false); // Manage modal visibility here
+
   useEffect(() => {
     const interval = setInterval(() => {
       sendHeightToParent();
@@ -60,14 +62,14 @@ function App() {
 
   return (
     <div className="App">
-      {(isMobile || isTablet) && <Navbar />} {/* Updated this line */}
+      {(isMobile || isTablet) && <Navbar onOpenModal={() => setShowModal(true)} />} {/* Pass a function to open the modal */}
       <div style={{ backgroundColor: '#f2f2f3', paddingTop: '20px' }}>
         <div className='container bg-white' style={{ maxWidth: '1150px' }}>
           <BrowserView>
             <ReactImageGallery imageData={imageData} />
           </BrowserView>
           <MobileView>
-            <ReactImageCustomGrid imageData={imageData} />
+            <ReactImageCustomGrid imageData={imageData} showModal={showModal} setShowModal={setShowModal} />
           </MobileView>
         </div>
       </div>
