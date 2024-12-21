@@ -15,8 +15,8 @@ export default defineConfig({
       // Proxy API requests if needed
     }
   },
-  // Add this to handle SPA fallback in production
-  base: '/',
+  // Update this to match your GitHub repository name
+  base: '/sfmta-image-gallery/',
   resolve: {
     alias: {
       // Setup any aliases here
