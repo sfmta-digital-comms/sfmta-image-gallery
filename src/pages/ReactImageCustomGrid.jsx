@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Lightbox from 'yet-another-react-lightbox';
@@ -12,10 +12,6 @@ import ExhibitDescription from '../components/ExhibitDescription';
 
 const ReactImageCustomGrid = ({ imageData, showModal, setShowModal }) => {
   const [index, setIndex] = useState(-1);
-  // Initialize showModal state to true to show the modal when the component mounts
-  // const [showModal, setShowModal] = useState(true);
-
-  // Function to close the modal
   const handleCloseModal = () => setShowModal(false);
 
   const imagesForGallery = imageData.map((imageData, index) => ({
@@ -25,7 +21,6 @@ const ReactImageCustomGrid = ({ imageData, showModal, setShowModal }) => {
     description: imageData.exif.Caption
   }));
 
-  // Prepare slides for the lightbox
   const slides = imagesForGallery.map(({ src, description }) => ({
     src,
     description,

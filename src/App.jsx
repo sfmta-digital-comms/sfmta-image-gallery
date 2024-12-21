@@ -2,15 +2,11 @@ import React from 'react';
 import { useEffect, useState } from 'react'
 import { BrowserView, MobileView, isMobile, isTablet } from 'react-device-detect';
 
-// import { Routes, Route } from 'react-router-dom';
-// import Home from './pages/Home';
 import ReactImageGallery from './pages/ReactImageGallery';
-// import ReactImageGrid from './pages/ReactImageGrid';
 import ReactImageCustomGrid from './pages/ReactImageCustomGrid';
 import Navbar from './components/Navbar';
-// import ReactImageCustomGridNoBorder from './pages/ReactImageCustomGridNoBorder';
 import './App.css';
-import imageData from './imageData.json'; // Import image data
+import imageData from './imageData.json';
 
 function sendHeightToParent() {
   let height = document.body.scrollHeight;
@@ -19,7 +15,6 @@ function sendHeightToParent() {
     frameId: 'appIframeID' // Make sure to use the actual ID of your iframe
   }, '*');
 }
-
 
 function sendMessageToDeviceParent() {
   window.parent.postMessage({
