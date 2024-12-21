@@ -12,7 +12,18 @@ const ReactImageGallery = ({ imageData }) => {
     loading: 'lazy',
     description: imgData.exif.Caption || imgData.description,
     originalHeight: 700,
+    thumbnailAlt: imgData.exif.ImageDescription || imgData.description, // Add thumbnail alt text
   }));
+
+  const renderItem = (item) => (
+    <div className="image-gallery-thumbnail">
+      <img
+        src={item.thumbnail}
+        alt={item.thumbnailAlt || item.originalAlt || 'Thumbnail'}
+        loading="lazy"
+      />
+    </div>
+  );
 
   return (
     <>
@@ -22,9 +33,10 @@ const ReactImageGallery = ({ imageData }) => {
         showFullscreenButton={false}
         thumbnailPosition='bottom'
         showPlayButton={false}
+        renderItem={renderItem} // Use the custom render function
       />
     </>
-  )
-
+  );
 };
+
 export default ReactImageGallery;
