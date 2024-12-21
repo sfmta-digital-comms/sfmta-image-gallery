@@ -1,25 +1,19 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { resolve } from 'path';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   build: {
+    outDir: 'docs', // Output build files to the /docs folder
+    emptyOutDir: true, // Clear the folder before building
     rollupOptions: {
       plugins: [], // Add any Rollup plugins you need here
-    }
+    },
   },
-  server: {
-    proxy: {
-      // Proxy API requests if needed
-    }
-  },
-  // Update this to match your GitHub repository name
-  base: '/sfmta-image-gallery/',
+  base: '/sfmta-image-gallery/', // Base URL for GitHub Pages (repository name)
   resolve: {
     alias: {
-      // Setup any aliases here
+      // Define any path aliases here, if needed
     },
   },
 });
